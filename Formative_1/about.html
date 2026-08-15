@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kunyarungo AgriTech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f4;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1b4d2f;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #f4c430;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #f4c430;
+        }
+
+        /* Page Title */
+        .page-title {
+            background: linear-gradient(135deg, #1b4d2f 0%, #6b4423 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #1b4d2f;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #f4c430;
+            padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            color: #6b4423;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            background-color: #f4f1e8;
+            border-left: 5px solid #f4c430;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0;
+        }
+
+        .highlight h3 {
+            margin-top: 0;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background-color: #f9f7f4;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #1b4d2f;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h4 {
+            color: #1b4d2f;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-marker {
+            background-color: #f4c430;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1b4d2f;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content {
+            padding-top: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: #1b4d2f;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #1b4d2f 0%, #2d6b47 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .value-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #f4c430;
+        }
+
+        .value-card p {
+            color: white;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b4d2f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .page-title {
+                padding: 2rem 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-marker {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">☀️ Kunyarungo AgriTech</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>About Kunyarungo AgriTech Solutions</h1>
+        <p>Empowering farmers through sustainable technology</p>
+    </div>
+
+    <main>
+        <section>
+            <h2>Our Organisation</h2>
+            <p>
+                Kunyarungo AgriTech Solutions is an agritech enterprise based in rural South Africa, dedicated to empowering small-scale and emerging farmers with sustainable agricultural solutions. Our name, "Kunyarungo," reflects our commitment to growing together with the farming communities we serve.
+            </p>
+            <p>
+                Founded on the principle that technology should be accessible to all farmers regardless of their scale of operation, we design and supply affordable, solar-powered irrigation and water management systems that help farmers reduce reliance on unpredictable rainfall and rising electricity costs.
+            </p>
+        </section>
+
+        <section>
+            <h2>Mission & Vision</h2>
+            <div class="highlight">
+                <h3>Our Mission</h3>
+                <p>
+                    To empower small-scale and emerging farmers with affordable, sustainable agricultural technology that improves crop yield and water security.
+                </p>
+            </div>
+            <div class="highlight" style="border-left-color: #1b4d2f;">
+                <h3>Our Vision</h3>
+                <p>
+                    To become a leading provider of accessible, renewable energy agricultural solutions across Southern Africa, enabling farmers to build resilient, profitable, and sustainable operations.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Values</h2>
+            <p>
+                Our work is guided by core values that inform every decision we make and every product we develop:
+            </p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>Sustainability</h4>
+                    <p>Environmental and economic stewardship</p>
+                </div>
+                <div class="value-card">
+                    <h4>Accessibility</h4>
+                    <p>Technology for all farmers</p>
+                </div>
+                <div class="value-card">
+                    <h4>Innovation</h4>
+                    <p>Continuous improvement and adaptation</p>
+                </div>
+                <div class="value-card">
+                    <h4>Partnership</h4>
+                    <p>Collaboration with communities and stakeholders</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our History & Growth</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Foundation</h4>
+                        <p>Kunyarungo AgriTech Solutions was established to address the critical challenge of water scarcity and rising energy costs in rural farming communities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Product Development</h4>
+                        <p>We developed our first generation of solar-powered irrigation kits, tested and refined with feedback from local farming cooperatives.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Strategic Partnerships</h4>
+                        <p>We established partnerships with government agencies (DALRRD) and NGOs to expand our reach and support government-funded agricultural initiatives.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Expansion & Impact</h4>
+                        <p>Today, we serve small-scale farmers, agricultural cooperatives, and development organisations across South Africa, with plans to expand to the broader Southern African region.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Meet the Team</h2>
+            <p>
+                Our team brings together expertise in agriculture, renewable energy, engineering, and community development. We are passionate about creating solutions that make a real difference in the lives of farmers.
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-icon">👨‍💼</div>
+                    <h4>Dr. Thabo Mthembu</h4>
+                    <p><strong>Founder & Director</strong><br>Agricultural engineer with 15+ years experience in sustainable farming solutions</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-icon">👩‍🔬</div>
+                    <h4>Grace Okonkwo</h4>
+                    <p><strong>Product Development Lead</strong><br>Renewable energy specialist and irrigation systems designer</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-icon">👨‍💻</div>
+                    <h4>Mpho Lekhanya</h4>
+                    <p><strong>Technical Support Manager</strong><br>Field engineer providing installation and maintenance support</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-icon">👩‍💼</div>
+                    <h4>Amahle Dlamini</h4>
+                    <p><strong>Community Liaison Officer</strong><br>Connects with farmers, cooperatives, and partner organisations</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Target Audience</h2>
+            <p>
+                We serve several key segments in the agricultural and development sectors:
+            </p>
+            <ul style="margin-left: 1.5rem; color: #666;">
+                <li style="margin-bottom: 1rem;"><strong>Small-scale and emerging farmers</strong> looking to improve water security and reduce energy costs</li>
+                <li style="margin-bottom: 1rem;"><strong>Agricultural cooperatives</strong> seeking scalable, sustainable farming solutions for their members</li>
+                <li style="margin-bottom: 1rem;"><strong>Government agencies</strong> (such as DALRRD) funding sustainable agricultural initiatives</li>
+                <li><strong>NGOs and development partners</strong> supporting rural economic development and food security</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kunyarungo AgriTech Solutions. All rights reserved.</p>
+        <p>Empowering farmers with sustainable technology | South Africa-based</p>
+    </footer>
+</body>
+</html>

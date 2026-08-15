@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry - Kunyarungo AgriTech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f4;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1b4d2f;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #f4c430;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #f4c430;
+        }
+
+        /* Page Title */
+        .page-title {
+            background: linear-gradient(135deg, #1b4d2f 0%, #6b4423 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro-section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #f4c430;
+        }
+
+        .intro-section h2 {
+            color: #1b4d2f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .intro-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2 {
+            color: #1b4d2f;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #f4c430;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1b4d2f;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #f4c430;
+            box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-size: 0.95rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #f4c430;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #d32f2f;
+        }
+
+        /* Form Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button,
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background-color: #f4c430;
+            color: #1b4d2f;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e6b800;
+            transform: scale(1.02);
+        }
+
+        input[type="reset"] {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #ccc;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: #d32f2f !important;
+        }
+
+        /* Services Info */
+        .services-info {
+            background-color: #f0f8e8;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            border-left: 5px solid #1b4d2f;
+        }
+
+        .services-info h3 {
+            color: #1b4d2f;
+            margin-bottom: 1rem;
+        }
+
+        .services-info ul {
+            margin-left: 1.5rem;
+            color: #666;
+        }
+
+        .services-info li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b4d2f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button,
+            input[type="submit"],
+            input[type="reset"] {
+                width: 100%;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .page-title {
+                padding: 2rem 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">☀️ Kunyarungo AgriTech</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>Product & Service Enquiry</h1>
+        <p>Get in touch about our solar irrigation solutions</p>
+    </div>
+
+    <main>
+        <section class="intro-section">
+            <h2>We're Here to Help</h2>
+            <p>
+                Interested in our solar-powered irrigation and water management solutions? Fill out the form below to request a quote, schedule a consultation, or ask any questions about our products and services. We'll get back to you as soon as possible.
+            </p>
+        </section>
+
+        <section class="services-info">
+            <h3>Our Products & Services</h3>
+            <ul>
+                <li><strong>Solar Irrigation Kits:</strong> Complete system packages for small-scale farmers</li>
+                <li><strong>Water Management Solutions:</strong> Custom-designed systems for your farm's needs</li>
+                <li><strong>Installation Services:</strong> Professional installation and system setup</li>
+                <li><strong>Maintenance & Support:</strong> Ongoing technical support and servicing</li>
+                <li><strong>Consultation Services:</strong> Expert advice on optimising your farming operation</li>
+            </ul>
+        </section>
+
+        <div class="form-container">
+            <h2>Send Us Your Enquiry</h2>
+            <div class="success-message" id="successMessage">
+                ✓ Thank you! Your enquiry has been submitted successfully. We will contact you shortly.
+            </div>
+
+            <form id="enquiryForm" method="POST" action="https://formspree.io/f/your-form-id" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="required-field">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <span class="error-message" id="firstNameError">Please enter your first name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="required-field">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <span class="error-message" id="lastNameError">Please enter your last name</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="required-field">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError">Please enter a valid email address</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="required-field">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <span class="error-message" id="phoneError">Please enter a valid phone number</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="farmName">Farm/Organisation Name</label>
+                    <input type="text" id="farmName" name="farmName">
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiryType" class="required-field">Enquiry Type</label>
+                    <select id="enquiryType" name="enquiryType" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="product-information">Product Information</option>
+                        <option value="quote-request">Request a Quote</option>
+                        <option value="consultation">Consultation Services</option>
+                        <option value="installation">Installation Inquiry</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="error-message" id="enquiryTypeError">Please select an enquiry type</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="required-field">Interested Products/Services</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="interests" value="Solar Irrigation Kits">
+                            Solar Irrigation Kits
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="interests" value="Water Management Systems">
+                            Water Management Systems
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="interests" value="Installation Services">
+                            Installation Services
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="interests" value="Maintenance Support">
+                            Maintenance & Support
+                        </label>
+                    </div>
+                    <span class="error-message" id="interestsError">Please select at least one product/service</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="farmSize">Farm Size (hectares)</label>
+                    <input type="number" id="farmSize" name="farmSize" min="0" step="0.1">
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="required-field">Your Message / Additional Information</label>
+                    <textarea id="message" name="message" required placeholder="Please tell us about your farming operation and what you're looking for..."></textarea>
+                    <span class="error-message" id="messageError">Please enter your message (minimum 10 characters)</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="required-field">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        I consent to Kunyarungo AgriTech Solutions contacting me about my enquiry
+                    </label>
+                    <span class="error-message" id="consentError">You must consent to be contacted</span>
+                </div>
+
+                <div class="button-group">
+                    <input type="submit" value="Submit Enquiry">
+                    <input type="reset" value="Clear Form">
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kunyarungo AgriTech Solutions. All rights reserved.</p>
+        <p>Empowering farmers with sustainable technology | South Africa-based</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('enquiryForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Email validation function
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // Phone validation function
+        function isValidPhone(phone) {
+            const phonePattern = /^[\d\s\-\+\(\)]{10,}$/;
+            return phonePattern.test(phone);
+        }
+
+        // Clear error state
+        function clearError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            if (field) {
+                field.classList.remove('error');
+            }
+            if (error) {
+                error.classList.remove('show');
+            }
+        }
+
+        // Show error state
+        function showError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            if (field) {
+                field.classList.add('error');
+            }
+            if (error) {
+                error.classList.add('show');
+            }
+        }
+
+        // Form validation
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Clear previous errors and success message
+            successMessage.classList.remove('show');
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('input, select, textarea').forEach(el => el.classList.remove('error'));
+
+            let isValid = true;
+
+            // Validate First Name
+            const firstName = document.getElementById('firstName').value.trim();
+            if (!firstName) {
+                showError('firstName', 'firstNameError');
+                isValid = false;
+            } else {
+                clearError('firstName', 'firstNameError');
+            }
+
+            // Validate Last Name
+            const lastName = document.getElementById('lastName').value.trim();
+            if (!lastName) {
+                showError('lastName', 'lastNameError');
+                isValid = false;
+            } else {
+                clearError('lastName', 'lastNameError');
+            }
+
+            // Validate Email
+            const email = document.getElementById('email').value.trim();
+            if (!email || !isValidEmail(email)) {
+                showError('email', 'emailError');
+                isValid = false;
+            } else {
+                clearError('email', 'emailError');
+            }
+
+            // Validate Phone
+            const phone = document.getElementById('phone').value.trim();
+            if (!phone || !isValidPhone(phone)) {
+                showError('phone', 'phoneError');
+                isValid = false;
+            } else {
+                clearError('phone', 'phoneError');
+            }
+
+            // Validate Enquiry Type
+            const enquiryType = document.getElementById('enquiryType').value;
+            if (!enquiryType) {
+                showError('enquiryType', 'enquiryTypeError');
+                isValid = false;
+            } else {
+                clearError('enquiryType', 'enquiryTypeError');
+            }
+
+            // Validate Interests (at least one checkbox)
+            const interestCheckboxes = document.querySelectorAll('input[name="interests"]:checked');
+            if (interestCheckboxes.length === 0) {
+                showError('', 'interestsError');
+                isValid = false;
+            } else {
+                document.getElementById('interestsError').classList.remove('show');
+            }
+
+            // Validate Message
+            const message = document.getElementById('message').value.trim();
+            if (!message || message.length < 10) {
+                showError('message', 'messageError');
+                isValid = false;
+            } else {
+                clearError('message', 'messageError');
+            }
+
+            // Validate Consent
+            const consent = document.getElementById('consent').checked;
+            if (!consent) {
+                showError('consent', 'consentError');
+                isValid = false;
+            } else {
+                clearError('consent', 'consentError');
+            }
+
+            if (isValid) {
+                // Show success message and reset form
+                successMessage.classList.add('show');
+                form.reset();
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                // Optionally submit the form to a backend or email service
+                // form.submit();
+            }
+        });
+
+        // Clear error messages when user starts typing
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+            field.addEventListener('change', function() {
+                this.classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>

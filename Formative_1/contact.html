@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Kunyarungo AgriTech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f4;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1b4d2f;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #f4c430;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #f4c430;
+        }
+
+        /* Page Title */
+        .page-title {
+            background: linear-gradient(135deg, #1b4d2f 0%, #6b4423 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .contact-intro {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #f4c430;
+            text-align: center;
+        }
+
+        .contact-intro h2 {
+            color: #1b4d2f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-intro p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #1b4d2f;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f4c430;
+        }
+
+        .contact-card h3 {
+            color: #1b4d2f;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #1b4d2f;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #f4c430;
+        }
+
+        /* Location Cards */
+        .location-info {
+            background-color: #f0f8e8;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            border-left: 4px solid #1b4d2f;
+        }
+
+        .location-info h4 {
+            color: #1b4d2f;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Map Container */
+        .map-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .map-container h2 {
+            color: #1b4d2f;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #f4c430;
+            padding-bottom: 0.5rem;
+        }
+
+        .map-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 66.666%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .service-locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .location-item {
+            background-color: #f9f7f4;
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 4px solid #f4c430;
+        }
+
+        .location-item h4 {
+            color: #1b4d2f;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .location-item p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Form */
+        .form-container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2 {
+            color: #1b4d2f;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #f4c430;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1b4d2f;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #f4c430;
+            box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #d32f2f;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        button,
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background-color: #f4c430;
+            color: #1b4d2f;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e6b800;
+            transform: scale(1.02);
+        }
+
+        input[type="reset"] {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #ccc;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: #d32f2f !important;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b4d2f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-grid,
+            .service-locations {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button,
+            input[type="submit"],
+            input[type="reset"] {
+                width: 100%;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .page-title {
+                padding: 2rem 1rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">☀️ Kunyarungo AgriTech</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="enquiry.html">Enquiry</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>Contact Us</h1>
+        <p>Get in touch with Kunyarungo AgriTech Solutions</p>
+    </div>
+
+    <main>
+        <section class="contact-intro">
+            <h2>We'd Love to Hear From You</h2>
+            <p>
+                Have questions about our solar irrigation solutions? Need to discuss your farming operation? Contact us using any of the methods below, and our team will get back to you promptly.
+            </p>
+        </section>
+
+        <!-- Contact Information Cards -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-card-icon">📞</div>
+                <h3>Phone</h3>
+                <p>Call us during business hours (Monday - Friday, 8am - 5pm SAST)</p>
+                <p><strong>+27 (0) 12 345 6789</strong></p>
+                <p style="font-size: 0.9rem; color: #999;">General enquiries</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-card-icon">✉️</div>
+                <h3>Email</h3>
+                <p>Send us an email and we'll respond within 24 hours</p>
+                <p><a href="mailto:info@kunyarungo.co.za">info@kunyarungo.co.za</a></p>
+                <p style="font-size: 0.9rem; color: #999;"><a href="mailto:support@kunyarungo.co.za">support@kunyarungo.co.za</a> - Technical support</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-card-icon">📍</div>
+                <h3>Office Address</h3>
+                <div class="location-info">
+                    <h4>Head Office - Pretoria Region</h4>
+                    <p>Kunyarungo AgriTech Solutions<br>
+                    123 Agricultural Park<br>
+                    Pretoria, 0123<br>
+                    South Africa</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Locations Map Section -->
+        <section class="map-container">
+            <h2>Our Service Locations</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">
+                We operate across multiple regions in South Africa, providing consultation, installation, and support services to farmers in rural areas.
+            </p>
+
+            <!-- Map Placeholder with SVG -->
+            <div class="map-frame">
+                <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="800" height="600" fill="#e3f2fd"/>
+                    
+                    <!-- South Africa simplified shape (placeholder) -->
+                    <rect x="300" y="150" width="200" height="300" fill="#90ee90" opacity="0.3" stroke="#1b4d2f" stroke-width="2"/>
+                    
+                    <!-- Service Location Markers -->
+                    <!-- Pretoria -->
+                    <circle cx="360" cy="200" r="12" fill="#f4c430" stroke="#1b4d2f" stroke-width="2"/>
+                    <circle cx="360" cy="200" r="7" fill="#1b4d2f" opacity="0.3"/>
+                    <text x="360" y="235" text-anchor="middle" font-size="14" fill="#1b4d2f" font-weight="bold">Pretoria</text>
+                    
+                    <!-- Limpopo -->
+                    <circle cx="340" cy="120" r="12" fill="#f4c430" stroke="#1b4d2f" stroke-width="2"/>
+                    <circle cx="340" cy="120" r="7" fill="#1b4d2f" opacity="0.3"/>
+                    <text x="340" y="95" text-anchor="middle" font-size="14" fill="#1b4d2f" font-weight="bold">Limpopo</text>
+                    
+                    <!-- Mpumalanga -->
+                    <circle cx="430" cy="180" r="12" fill="#f4c430" stroke="#1b4d2f" stroke-width="2"/>
+                    <circle cx="430" cy="180" r="7" fill="#1b4d2f" opacity="0.3"/>
+                    <text x="430" y="155" text-anchor="middle" font-size="14" fill="#1b4d2f" font-weight="bold">Mpumalanga</text>
+                    
+                    <!-- North West -->
+                    <circle cx="280" cy="250" r="12" fill="#f4c430" stroke="#1b4d2f" stroke-width="2"/>
+                    <circle cx="280" cy="250" r="7" fill="#1b4d2f" opacity="0.3"/>
+                    <text x="280" y="275" text-anchor="middle" font-size="14" fill="#1b4d2f" font-weight="bold">North West</text>
+                    
+                    <!-- Legend -->
+                    <rect x="20" y="20" width="150" height="100" fill="white" opacity="0.9" rx="5"/>
+                    <circle cx="35" cy="35" r="6" fill="#f4c430" stroke="#1b4d2f" stroke-width="1.5"/>
+                    <text x="50" y="40" font-size="12" fill="#1b4d2f">Service Locations</text>
+                    
+                    <rect x="20" y="55" width="150" height="60" fill="#90ee90" opacity="0.3" stroke="#1b4d2f" stroke-width="1"/>
+                    <text x="35" y="95" font-size="12" fill="#1b4d2f">Active Service Area</text>
+                </svg>
+            </div>
+
+            <!-- Service Locations List -->
+            <div class="service-locations">
+                <div class="location-item">
+                    <h4>📍 Pretoria (Head Office)</h4>
+                    <p><strong>Main office and operations hub</strong></p>
+                    <p>123 Agricultural Park<br>Pretoria, 0123</p>
+                    <p>Phone: +27 (0) 12 345 6789</p>
+                </div>
+
+                <div class="location-item">
+                    <h4>📍 Limpopo Region</h4>
+                    <p><strong>Rural farming support</strong></p>
+                    <p>Field office serving the Limpopo Province</p>
+                    <p>Phone: +27 (0) 15 XXX XXXX</p>
+                </div>
+
+                <div class="location-item">
+                    <h4>📍 Mpumalanga Region</h4>
+                    <p><strong>Installation & consultation</strong></p>
+                    <p>Serving small-scale farmers across Mpumalanga</p>
+                    <p>Phone: +27 (0) 13 XXX XXXX</p>
+                </div>
+
+                <div class="location-item">
+                    <h4>📍 North West Region</h4>
+                    <p><strong>Cooperative support</strong></p>
+                    <p>Working with agricultural cooperatives</p>
+                    <p>Phone: +27 (0) 18 XXX XXXX</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="form-container">
+            <h2>Send Us a Message</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+            <div class="success-message" id="successMessage">
+                ✓ Thank you! Your message has been sent successfully. We'll contact you soon.
+            </div>
+
+            <form id="contactForm" method="POST" action="https://formspree.io/f/your-form-id" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="required-field">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <span class="error-message" id="firstNameError">Please enter your first name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="required-field">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <span class="error-message" id="lastNameError">Please enter your last name</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="required-field">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError">Please enter a valid email address</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" class="required-field">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                    <span class="error-message" id="subjectError">Please enter a subject</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="required-field">Message</label>
+                    <textarea id="message" name="message" required placeholder="Please share your message or enquiry..."></textarea>
+                    <span class="error-message" id="messageError">Please enter your message (minimum 10 characters)</span>
+                </div>
+
+                <div class="button-group">
+                    <input type="submit" value="Send Message">
+                    <input type="reset" value="Clear Form">
+                </div>
+            </form>
+        </section>
+
+        <!-- Additional Information -->
+        <section style="background-color: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 2rem;">
+            <h2 style="color: #1b4d2f; margin-bottom: 1rem; font-size: 1.5rem;">Additional Information</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div>
+                    <h3 style="color: #1b4d2f; margin-bottom: 0.5rem;">Business Hours</h3>
+                    <p style="color: #666;">Monday - Friday: 8:00 AM - 5:00 PM SAST<br>
+                    Saturday: 9:00 AM - 1:00 PM SAST<br>
+                    Sunday: Closed</p>
+                </div>
+                <div>
+                    <h3 style="color: #1b4d2f; margin-bottom: 0.5rem;">Response Time</h3>
+                    <p style="color: #666;">Email enquiries: Within 24 hours<br>
+                    Phone calls: Answered during business hours<br>
+                    Emergency support: Call our hotline</p>
+                </div>
+                <div>
+                    <h3 style="color: #1b4d2f; margin-bottom: 0.5rem;">Social Media</h3>
+                    <p style="color: #666;">Follow us on Facebook for updates and project highlights<br>
+                    <a href="https://facebook.com" style="color: #1b4d2f; text-decoration: none; font-weight: 600;">facebook.com/kunyarungo</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kunyarungo AgriTech Solutions. All rights reserved.</p>
+        <p>Empowering farmers with sustainable technology | South Africa-based</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Email validation function
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        // Clear error state
+        function clearError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            if (field) {
+                field.classList.remove('error');
+            }
+            if (error) {
+                error.classList.remove('show');
+            }
+        }
+
+        // Show error state
+        function showError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            if (field) {
+                field.classList.add('error');
+            }
+            if (error) {
+                error.classList.add('show');
+            }
+        }
+
+        // Form validation
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Clear previous errors and success message
+            successMessage.classList.remove('show');
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('input, select, textarea').forEach(el => el.classList.remove('error'));
+
+            let isValid = true;
+
+            // Validate First Name
+            const firstName = document.getElementById('firstName').value.trim();
+            if (!firstName) {
+                showError('firstName', 'firstNameError');
+                isValid = false;
+            } else {
+                clearError('firstName', 'firstNameError');
+            }
+
+            // Validate Last Name
+            const lastName = document.getElementById('lastName').value.trim();
+            if (!lastName) {
+                showError('lastName', 'lastNameError');
+                isValid = false;
+            } else {
+                clearError('lastName', 'lastNameError');
+            }
+
+            // Validate Email
+            const email = document.getElementById('email').value.trim();
+            if (!email || !isValidEmail(email)) {
+                showError('email', 'emailError');
+                isValid = false;
+            } else {
+                clearError('email', 'emailError');
+            }
+
+            // Validate Subject
+            const subject = document.getElementById('subject').value.trim();
+            if (!subject) {
+                showError('subject', 'subjectError');
+                isValid = false;
+            } else {
+                clearError('subject', 'subjectError');
+            }
+
+            // Validate Message
+            const message = document.getElementById('message').value.trim();
+            if (!message || message.length < 10) {
+                showError('message', 'messageError');
+                isValid = false;
+            } else {
+                clearError('message', 'messageError');
+            }
+
+            if (isValid) {
+                // Show success message and reset form
+                successMessage.classList.add('show');
+                form.reset();
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                // Optionally submit the form to a backend or email service
+                // form.submit();
+            }
+        });
+
+        // Clear error messages when user starts typing
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+            field.addEventListener('change', function() {
+                this.classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>
